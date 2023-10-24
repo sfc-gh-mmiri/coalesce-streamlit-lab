@@ -3,43 +3,43 @@ Coalesce+Streamlit Hands-on Lab
 
 ### Prerequisite ###
 
-To run this Streamlit, the following criteria must be met: 
+In orde to run this Streamlit lab, the following criteria must be met: 
 
-- Your Snowflake account must be hosted on AWS (Streamlit-in-Snowflake is only available on AWS as of now).
-- You must have completed the Coalesce Hands-On Guide, which can be accessed here: https://guides.coalesce.io/foundations/index.html#0
+- Your Snowflake account must be hosted on AWS, as Streamlit-in-Snowflake is currently available on Snowflake accounts hosted on AWS only.
+- You must have completed the Coalesce Hands-On Guide, which can be found at this link: https://guides.coalesce.io/foundations/index.html#0
 
 ### Instructions ###
-Once the Coalesce Hands-on Guide is completed, you should have a database with your chosen name and two schemas (`WORKDEV` and `WORKTEST`). This application will require the following tables to be available and populated with data: 
+After finishing the Coalesce Hands-on Guide, you should have a database named of your choice along with two schemas (`WORKDEV`` and `WORKTEST``). This Streamlit app will need the following tables to be present and filled with data:
 
 - `FCT_LINEITEM_ORDERS_DIM_LOOKUP`
 - `DIM_SUPPLIER`
 - `DIM_PART`
 
-Streamlit apps can be deployed in different ways. The focus of this hands-on lab is to leverage Snowflake's built-in UI, which doesn't require a Python environment to be set up on the user's computer. 
+Streamlit apps can be deployed in multiple ways. In this hands-on lab, we'll be utilising Snowflake's built-in UI, which doesn't require a Python environment to be set up on the user's computer.
 
-In order to deploy the Streamlit app (Open file `app.py` for the source code), first, log into your Snowflake account by navigating to its dedicated UI. Make sure you use the same Snowflake account that you have used for the Coalese Hands-on Guide earlier.
+In order to deploy the Streamlit app (Source code can be accessed by opening `app.py`), first, log into your Snowflake account's Snowsight UI. Make sure you're using the same Snowflake account that you have used for the Coalese Hands-on Guide earlier.
 
-Once logged in, make sure your current role is set to `ACCOUNT_ADMIN`. Once selected, you should see the <strong>Streamlit</strong> link on your Snowflake's home screen:
+Once logged in, make sure your current role is set to `ACCOUNT_ADMIN`. Once selected, you will find the <strong>Streamlit</strong> link on your Snowflake's home screen:
 
 ![Alt text](/images/01.jpg)
 
-Once selected, click on the <strong>+ Streamlit App</strong> button on the top right hand corner:
+Once selected, click on the <strong>+ Streamlit App</strong> button on the top right-hand corner:
 
 ![Alt text](/images/02.jpg)
 
-In the pop-up form, give a friendly name to your Streamlit app. Since the Streamlit app requires compute to run, you need to nominate a virtual warehouse to power the application. You also need to provide the database and schema where the app needs to be hosted. Each Streamlit app is a native Snowflake object, and therefore creating them in the right schema and database can simplify access control. For this tutorial, we recommend you save the app in the same database and schema where the Coalesce lab's output dataset is stored. The following screenshot shows how these parameters can be set:
+In the pop-up form, enter a friendly name for your Streamlit app. Since the Streamlit app runs on Snowflake compute, you need to nominate a virtual warehouse for the app to use. You also need to specify the database and schema where the app should be deployed to. Streamlit apps are native Snowflake objects, and therefore creating them in the right schema and database is important for proper access management. In this tutorial, we recommend using the same database and schema where the Coalesce lab's output dataset resides. The following screenshot shows how to configure these parameters:
 
 ![Alt text](/images/03.jpg)
 
-Once you click on the <strong>Create</strong> button, you should be redirected to Snowflake's built-in UI for building Streamlit apps. The UI comes with a sample Streamlit app. After a few seconds, the executable app should be available on the right hand side:
+Once you click on the <strong>Create</strong> button, you'll be redirected to Snowflake's built-in UI for building Streamlit apps. The UI is preloaded with a sample Streamlit app code. After a few seconds, the executable app should be running on the right-hand side:
 
 ![Alt text](/images/04.jpg)
 
-There are three small icons at the bottom left hand side of the screen that can be used to show/hide Snowflake's object explorer, the source code window, and the preview panel. 
+At the bottom left corner of the screen, you'll find three small icons for showing or hiding Snowflake's object explorer, the source code window, and the preview panel.
 
-In order to run the Hands-on Lab's Streamlit app, open the source file, copy the content and paste them into the code editors in the UI.
+To execute the Hands-on Lab's Streamlit app, open the source file, copy the content and paste into the code editor in the UI.
 
-Once done, find the following lines in the code and make sure these variables are pointing to the right tables:
+Once the code is pasted, locate the following lines in the code and make sure these variables are pointing to the right tables:
 
 ```
 param_fact_name = "FCT_LINEITEM_ORDERS_DIM_LOOKUP"
@@ -55,13 +55,13 @@ param_dim_supplier_name = "HOL_DB.WORKDIR.DIM_SUPPLIER"
 param_dim_part_name = "HOL_DB.WORKDIR.DIM_PART"
 ```
 
-Once checked, click on the <strong>Run</strong> button on the top right hand corner of the screen. This would pick up the pasted code and the app should refresh within a few seconds. You should see a screen similar to the below screenshot:
+Once checked, click on the <strong>Run</strong> button on the top right-hand corner of the screen. This will spin up a new Python runtime environment on the nominated compute cluster, and after a few seconds, you should see the live app in working state. Your screen should look similar to the below screenshot:
 
 ![Alt text](/images/05.jpg)
 
-The virtual warehouse powering the app will be in active state for as long as the app is being used. Not using the app will result in suspension of the app and consequently the virtual warehouse. Clicking back on the preview pane or clicking the Run button will launch the app again. 
+The virtual warehouse powering the app will be in active state for as long as the app registers user interaction. If the app is left unused for a few minutes, it'll be suspended and the underlying warehouse will be paused after the set period of inactivity. Clicking the Run botton or anywhere in the preview panel will relaunch the app (which will automatically resume warehouse if paused).
 
-To modify the warehouse in use or to delete the app, you can click on the name of the app on the top left corner of the screen and choose the option from the pop-up menu:
+To switch to a different virtual warehouse or to delete the app, you can click on the name of the app on the top left corner of the screen and choose the desired option from the pop-up menu:
 
 ![Alt text](/images/06.jpg)
 
