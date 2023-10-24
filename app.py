@@ -215,7 +215,7 @@ st.write('This application points to the output from the Coalesce Hands-on Lab. 
 # All filters are multi-select, so the return variables are of "list" type
 filter_part_type = st.multiselect('Part Type:',get_unique_part_types())
 filter_brand_name = st.multiselect('Brand Name:',get_unique_brands())
-filter_supplier_name = st.multiselect('Supplier Name',get_unique_suppliers())
+filter_supplier_name = st.multiselect('Supplier Name:',get_unique_suppliers())
 filter_shipping_date = st.slider('Ship Date:',value=
                                  (get_date_ranges().iloc[0,0],
                                   get_date_ranges().iloc[0,1]))
