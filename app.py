@@ -77,11 +77,6 @@ def get_order_details(filter_part_type,filter_brand_name,filter_supplier_name,fi
     # Order Status is going to be converted to a CASE statement in SQL
     # The other two columns are concatenated values derived from other columns
     lineitem_orders_filtered = fact_lineitem_orders\
-        .with_column('"Order Status"',when(col("ORDER_ORDERSTATUS")=='O','Not shipped yet')\
-                .when(col("ORDER_ORDERSTATUS")=='P','Partially shipped')\
-                .when(col("ORDER_ORDERSTATUS")=='F','Fully shipped')\
-                .when(col("ORDER_ORDERSTATUS")=='C','Cancelled')\
-                 .otherwise('Unknown'))\
         .with_column('"Order Year-Month"',\
                 concat(date_part('yyyy',col("ORDER_ORDERDATE")),lit('-'),\
                 lpad(date_part('mm',col("ORDER_ORDERDATE")),2,lit('0'))))\
@@ -129,8 +124,7 @@ def get_order_details(filter_part_type,filter_brand_name,filter_supplier_name,fi
         col("P_CONTAINER").as_("Part Container"),
         col("P_RETAILPRICE").as_("Retail Price"),
         col("Order Priority"),
-        col("Order Year-Month"),        
-        col("Order Status")
+        col("Order Year-Month")
     )
     return lineitem_orders_filtered
 
@@ -274,6 +268,7 @@ monthly_revenue_chart = alt.Chart(orders_by_month).mark_line().encode(
     color=alt.value("#E91E63")
 )
 
+
 # Based on what measure has been selected by the user, the right chart will be shown
 # If 'Both' is selected, they will be combined into one chart
 if measure_name=='Both':
@@ -346,4 +341,3 @@ with st.expander('Click to Save...'):
         session.sql("ALTER VIEW {0} SET COMMENT = '{1}'".format(view_name,comment)).collect()
         st.write('View {0} was created.'.format(view_name))
         
-
