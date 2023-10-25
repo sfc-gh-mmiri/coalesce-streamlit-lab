@@ -1,5 +1,5 @@
-# coalesce-streamlit-lab
-Coalesce+Streamlit Hands-on Lab
+# Coalesce + Streamlit Hands-on Lab
+This repository contains the Streamlit app code included in the Coalesce+Snowflake Hands-on Lab.
 
 ### Prerequisite ###
 
