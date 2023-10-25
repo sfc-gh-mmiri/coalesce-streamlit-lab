@@ -9,7 +9,7 @@ In orde to run this Streamlit lab, the following criteria must be met:
 - You must have completed the Coalesce Hands-On Guide, which can be found at this link: https://guides.coalesce.io/foundations/index.html#0
 
 ### Instructions ###
-After finishing the Coalesce Hands-on Guide, you should have a database named of your choice along with two schemas (`WORKDEV`` and `WORKTEST``). This Streamlit app will need the following tables to be present and filled with data:
+After finishing the Coalesce Hands-on Guide, you should have a database named of your choice along with two schemas (`WORKDEV` and `WORKTEST`). This Streamlit app will need the following tables to be present and filled with data:
 
 - `FCT_LINEITEM_ORDERS_DIM_LOOKUP`
 - `DIM_SUPPLIER`
